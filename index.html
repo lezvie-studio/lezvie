@@ -1,0 +1,67 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Лезвие — онлайн-запись</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Onest:wght@400;500;700&display=swap"><style>
+:root{--bg:#E8EDEC;--ink:#14201E;--green:#12332E;--brass:#B8893B;--red:#8E2A33;--card:#F6F8F7;--mut:#4B5B58;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1917;--ink:#E3EAE8;--card:#172825;--mut:#9DB0AC}}
+:root[data-theme="dark"]{--bg:#0E1917;--ink:#E3EAE8;--card:#172825;--mut:#9DB0AC}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Onest,system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{background:var(--green);color:#E8EDEC;padding:56px 0}.hero-in{display:flex;gap:32px;justify-content:space-between}
+h1,h2{font-family:"Alfa Slab One",Georgia,serif;font-weight:400}
+h1{font-size:clamp(56px,12vw,120px);line-height:.95;margin:12px 0 16px;color:#F6F8F7}h2{font-size:32px;line-height:1.1;margin:0 0 20px}
+.lead{max-width:34ch;font-size:19px;margin:0 0 24px}
+.btn{display:inline-block;padding:12px 22px;background:var(--brass);color:#14201E;font:700 17px Onest,sans-serif;text-decoration:none;border:2px solid var(--brass);border-radius:4px;margin:0 8px 8px 0;cursor:pointer}
+.btn.alt{background:transparent;color:#E8EDEC}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.pole{flex:none;width:44px;min-height:260px;border-radius:22px;border:3px solid #E8EDEC;background:repeating-linear-gradient(135deg,#8E2A33 0 14px,#F6F8F7 14px 28px,#2F5D7C 28px 42px);background-size:100% 59.4px;animation:spin 2.4s linear infinite}
+@keyframes spin{to{background-position:0 59.4px}}@media(prefers-reduced-motion:reduce){.pole{animation:none}}
+section{padding:44px 0}
+.prices{list-style:none;padding:0;margin:0;max-width:640px}.prices li{display:flex;align-items:baseline;gap:10px;padding:9px 0}
+.prices i{flex:1;border-bottom:2px dotted var(--mut);opacity:.5}.prices b{font-size:19px}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.team div{background:var(--card);padding:18px;border-left:6px solid var(--red)}.team p{margin:4px 0 0;color:var(--mut)}
+footer{background:var(--green);color:#C9D6D3;padding:28px 0;font-size:15px}footer a{color:#E8EDEC}
+fieldset{border:0;padding:0;margin:0 0 22px}legend{font-weight:700;margin-bottom:8px;padding:0}
+.chips,.slots{display:flex;flex-wrap:wrap;gap:8px}.chips label,.slots label{position:relative}
+.chips input,.slots input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chips span,.slots span{display:block;padding:9px 14px;border:2px solid var(--mut);border-radius:4px}
+input:checked+span{background:var(--green);color:#fff;border-color:var(--green)}
+input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
+input:disabled{cursor:not-allowed}input:disabled+span{opacity:.35;text-decoration:line-through}
+.bf{max-width:680px}.bf>label{display:grid;gap:4px;font-weight:500;margin-bottom:14px;max-width:420px}
+.bf>label input{font:inherit;padding:10px 12px;border:2px solid var(--mut);border-radius:4px;background:var(--card);color:var(--ink)}
+.sum{background:var(--card);border-left:6px solid var(--brass);padding:12px 14px;margin:6px 0 18px}
+.btn.wa{background:transparent;color:var(--ink);border-color:var(--ink)}
+</style></head><body>
+<header class="hero"><div class="wrap hero-in"><div>
+<p>ул. Ленина, 12. Ежедневно с 10:00 до 21:00</p><h1>Лезвие</h1>
+<p class="lead">Выберите услугу, мастера и время. Запись уйдёт нам в мессенджер, и мы подтвердим её в ответ.</p>
+<a class="btn" href="#book">Записаться</a></div><div class="pole" aria-hidden="true"></div></div></header>
+<main class="wrap"><section id="book"><h2>Онлайн-запись</h2>
+<form id="f" class="bf" onsubmit="return false">
+<fieldset><legend>Услуга</legend><div class="chips" id="svc"></div></fieldset>
+<fieldset><legend>Мастер</legend><div class="chips" id="mst"></div></fieldset>
+<fieldset><legend>День</legend><div class="chips" id="days"></div></fieldset>
+<fieldset><legend>Время</legend><div class="slots" id="slots"></div></fieldset>
+<label>Имя<input id="name" required autocomplete="given-name"></label>
+<label>Телефон<input id="tel" type="tel" required autocomplete="tel"></label>
+<p class="sum" id="sum" aria-live="polite"></p>
+<a class="btn" id="tg" target="_blank" rel="noopener">Записаться через Telegram</a>
+<a class="btn wa" id="wa" target="_blank" rel="noopener">Записаться через WhatsApp</a>
+</form></section></main>
+<footer><div class="wrap">Демо-сайт с онлайн-записью. Занятые окна в демо условные.</div></footer>
+<script>
+const CFG={tg:'lezvie_demo',wa:'79000000000'};
+const SV=[['Мужская стрижка',1500],['Стрижка + борода',2300],['Оформление бороды',900],['Бритьё опасной бритвой',1200],['Детская стрижка',1000]],MS=['Любой мастер','Артём','Михаил','Денис'],DN=['вс','пн','вт','ср','чт','пт','сб'];
+const $=s=>document.querySelector(s),val=n=>(document.querySelector(`input[name="${n}"]:checked`)||{}).value,p2=n=>String(n).padStart(2,'0');
+const now=new Date(),D=[...Array(7)].map((_,i)=>{const d=new Date(now);d.setDate(now.getDate()+i);return d});
+const dl=d=>`${DN[d.getDay()]} ${d.getDate()}.${p2(d.getMonth()+1)}`;
+function radios(id,name,items,fn){$(id).innerHTML=items.map((t,i)=>`<label><input type="radio" name="${name}" value="${i}"${i===0?' checked':''}><span>${fn(t)}</span></label>`).join('')}
+radios('#svc','svc',SV,s=>`${s[0]}, ${s[1]} ₽`);radios('#mst','mst',MS,m=>m);radios('#days','day',D,dl);
+function slots(){const day=+val('day'),m=+val('mst');let h='',any=false;
+for(let t=10;t<=20;t++){const d=new Date(D[day]);d.setHours(t,0,0,0);const dis=d-now<36e5||(D[day].getDate()*3+m*7+t*13)%5===0;if(!dis)any=true;h+=`<label><input type="radio" name="time" value="${t}"${dis?' disabled':''}><span>${t}:00</span></label>`}
+$('#slots').innerHTML=h+(any?'':'<p>На этот день свободных окон нет. Выберите другой день.</p>');const f=$('#slots input:not(:disabled)');if(f)f.checked=true;sum()}
+function msg(){const t=val('time');if(t===undefined)return'';const s=SV[+val('svc')],n=$('#name').value.trim(),p=$('#tel').value.trim();
+return`Здравствуйте! Хочу записаться: ${s[0]} (${s[1]} ₽), ${MS[+val('mst')].toLowerCase()}, ${dl(D[+val('day')])} в ${t}:00. Меня зовут ${n||'...'}, телефон ${p||'...'}.`}
+function sum(){const m=msg();$('#sum').textContent=m?m:'Выберите день с свободным временем.';const q=encodeURIComponent(m);$('#tg').href=`https://t.me/${CFG.tg}?text=${q}`;$('#wa').href=`https://wa.me/${CFG.wa}?text=${q}`}
+$('#f').addEventListener('change',e=>{['day','mst'].includes(e.target.name)?slots():sum()});$('#f').addEventListener('input',sum);
+['#tg','#wa'].forEach(s=>$(s).addEventListener('click',e=>{if(!msg()||!$('#f').checkValidity()){e.preventDefault();$('#f').reportValidity()}}));
+slots();
+</script></body></html>
